@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <script th:src="@{/js/jquery-3.4.1.slim.min.js}"></script>
+    <script th:src="@{/js/popper.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <title>lista departments</title>
+</head>
+<body>
+<div class="container">
+
+    <h2>Lista de Productos</h2>
+    <a class="btn btn-primary mt-4 mb-4" th:href="@{'/department/new'}">Nuevo Producto</a>
+    <div th:if="${msg != null}" th:text="${msg}" class="alert alert-success" role="alert"></div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Department name</th>
+            <th>manager id </th>
+            <th>location</th>
+            <th>department shot name</th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="ca, info : ${listDepartments}">
+            <td th:text="${info.index + 1}"></td>
+            <td th:text="${ca.department_name}"></td>
+            <td th:if="${ca.manager}"></td>
+            <td th:text="${ca.location.city}"></td>
+            <td th:text="${}"></td>
+            <td th:text="${product.unitsinstock}"></td>
+            <td th:text="${product.discontinued?'si':'no'}"></td>
+            <td><a class="btn btn-primary" th:href="@{'/product/edit' + '?id=' + ${product.id}}">Editar</a>
+            </td>
+            <td><a class="btn btn-danger" th:href="@{'/product/delete' + '?id=' + ${product.id}}">Borrar</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
