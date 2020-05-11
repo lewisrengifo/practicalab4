@@ -5,10 +5,7 @@ import com.example.demo.Repository.JobsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.Optional;
@@ -27,9 +24,9 @@ public class JobsControllers {
     public String crear(@ModelAttribute("jobs")Jobs jobs){
         return "jobs/form";
     }
-    @GetMapping("/guardar")
+    @PostMapping("/guardar")
     public String guardar(@ModelAttribute("jobs") Jobs jobs, RedirectAttributes redirectAttributes){
-        if (){
+        if (jobs.getJob_id()==0){
             redirectAttributes.addFlashAttribute("msg", "trabajo creado correctamente");
 
         } else{
@@ -38,11 +35,14 @@ public class JobsControllers {
         jobsRepository.save(jobs);
         return "redirect:/jobs/listar";
     }
-    @
+    @GetMapping("")
     public String editar(@ModelAttribute("jobs") Jobs jobs, Model model, @RequestParam("id") int id){
         Optional<Jobs> optionalJobs = jobsRepository.findById(id);
         if (optionalJobs.isPresent()){
             jobs = optionalJobs.get();
+            model.addAttribute("jobs", jobs);
+            return "jobs/listar";
         }
+        return "";
     }
 }
