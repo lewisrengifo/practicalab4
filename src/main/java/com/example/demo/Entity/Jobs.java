@@ -27,6 +27,7 @@ public class Jobs {
     @Size(max=40)
     private String job_title;
 
+
     @Digits(integer = 6, fraction = 0)
     @Positive
     private int min_salary;
@@ -60,4 +61,7 @@ public class Jobs {
         this.max_salary = max_salary;
     }
 
+
 }
+
+
