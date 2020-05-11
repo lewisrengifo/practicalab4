@@ -11,17 +11,20 @@ import javax.validation.constraints.Size;
 @Table(name = "jobs")
 public class Jobs {
 
-    public int getJob_id() {
-        return job_id;
-    }
 
-    public void setJob_id(int job_id) {
-        this.job_id = job_id;
-    }
     @Id
     @Digits(integer = 10,fraction = 0)
     @Positive
-    private int job_id;
+    private String job_id;
+
+    public String getJob_id() {
+        return job_id;
+    }
+
+    public void setJob_id(String job_id) {
+        this.job_id = job_id;
+    }
+
     @Column(nullable = false)
     @NotBlank
     @Size(max=40)

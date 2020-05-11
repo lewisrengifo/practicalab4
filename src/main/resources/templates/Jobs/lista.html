@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<div class="container">
+
+    <h2>Lista de Trabajos</h2>
+    <a class="btn btn-primary mt-4 mb-4" th:href="@{'/product/new'}">Nuevo Trabajo</a>
+    <div th:if="${msg != null}" th:text="${msg}" class="alert alert-success" role="alert"></div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Nombre del Trabajo</th>
+            <th>Minimo salario</th>
+            <th>Maximo salario</th>
+
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="jobs, info : ${listajobs}">
+            <td th:text="${info.index + 1}"></td>
+            <td th:text="${jobs.job_title}"></td>
+            <td th:text="${jobs.max_salary}"></td>
+            <td th:text="${jobs.min_salary}"></td>
+
+            <td><a class="btn btn-primary" th:href="@{'/jobs/editar' + '?id=' + ${}}">Editar</a>
+            </td>
+            <td><a class="btn btn-danger" th:href="@{'/jobs/borrar' + '?id=' + ${}}">Borrar</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
