@@ -23,11 +23,11 @@ public class Employees {
     @Email
     @NotBlank
     @Column(nullable = false)
-    @Size(max=25,message = "El email no puede ser mayor a 25 caracteres")
+    @Size(max=25,message = "El email no puede ser mayor a 25 caracteress")
     private String email;
     @Size(max=20,message = "El Numero no puede ser mayor a 20 caracteres")
     private String phoneNumber;
-    @NotBlank
+    @NotBlank   
     @Column(nullable = false)
     @DateTimeFormat
     private Date hireDate;
