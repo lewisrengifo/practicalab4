@@ -1,4 +1,7 @@
 package com.example.demo.Repository;
 
-public interface JobsRepository {
+import com.example.demo.Entity.Jobs;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface JobsRepository extends JpaRepository<Jobs, Integer> {
 }
