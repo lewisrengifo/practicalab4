@@ -1,5 +1,6 @@
 package com.example.demo.Entity;
 
+
 import javax.persistence.*;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotBlank;
@@ -9,16 +10,23 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name = "jobs")
 public class Jobs {
+
+    public int getJob_id() {
+        return job_id;
+    }
+
+    public void setJob_id(int job_id) {
+        this.job_id = job_id;
+    }
     @Id
-    @OneToMany
-    @JoinColumn(name = "job_id")
     @Digits(integer = 10,fraction = 0)
     @Positive
-    private Employees job_id;
+    private int job_id;
     @Column(nullable = false)
     @NotBlank
     @Size(max=40)
     private String job_title;
+
     @Digits(integer = 6, fraction = 0)
     @Positive
     private int min_salary;
@@ -26,13 +34,7 @@ public class Jobs {
     @Positive
     private int max_salary;
 
-    public Employees getJob_id() {
-        return job_id;
-    }
 
-    public void setJob_id(Employees job_id) {
-        this.job_id = job_id;
-    }
 
     public String getJob_title() {
         return job_title;
@@ -57,4 +59,5 @@ public class Jobs {
     public void setMax_salary(int max_salary) {
         this.max_salary = max_salary;
     }
+
 }

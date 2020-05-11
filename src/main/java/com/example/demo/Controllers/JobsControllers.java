@@ -39,10 +39,10 @@ public class JobsControllers {
         return "redirect:/jobs/listar";
     }
     @
-    public String editar(@ModelAttribute("jobs") Jobs jobs, Model model, RequestParam("id") int id){
+    public String editar(@ModelAttribute("jobs") Jobs jobs, Model model, @RequestParam("id") int id){
         Optional<Jobs> optionalJobs = jobsRepository.findById(id);
         if (optionalJobs.isPresent()){
-            jobs =optionalJobs.get();
+            jobs = optionalJobs.get();
         }
     }
 }
